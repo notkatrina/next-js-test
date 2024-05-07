@@ -4,7 +4,7 @@ import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.t
 
 
 //export default async (request, context) => 
-export default async function handler(request: Request, context: Context){
+export default async function handler(request, context){
   const url = new URL(request.url);
   // Only run if the `sponge` query parameter is set
   if (!url.searchParams.has("sponge")) {
