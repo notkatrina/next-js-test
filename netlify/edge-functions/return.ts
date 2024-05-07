@@ -6,7 +6,7 @@ export default async (request, context) => {
 
   // Only run if the `cheese` query parameter is set
   if (!url.searchParams.has("cheese")) {
-    return;
+    return();
   }
 
  // const location = context?.geo?.city;
