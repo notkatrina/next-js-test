@@ -23,7 +23,7 @@ export default async (request, context) => {
       element: (element) => {
          element.setAttribute("style", "background-color: red;");
       },
-         console.log(`ran return context for ${url} `);
+         console.log(`ran return context`);
     })
     
   return rewriter.transform(response);
