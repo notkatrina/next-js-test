@@ -12,9 +12,7 @@ export default function Home() {
 
       <main>
         <Header title="Welcome to my app!" />
-        <p id="platter">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <p id="platter"/>
       </main>
 
       <Footer />
