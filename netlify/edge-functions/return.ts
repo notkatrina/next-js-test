@@ -1,4 +1,4 @@
-
+import { Config, Context } from "@netlify/edge-functions";
 import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
 
 export default async (request, context) => {
