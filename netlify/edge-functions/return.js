@@ -1,14 +1,11 @@
-import { Config, Context } from "@netlify/edge-functions";
-import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
-  
 
-  
-//export default async (request, context) =>
-export default async function handler(request, context){
+import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
+
+export default async (request, context) => {
   const url = new URL(request.url);
-  // Only run if the `cheese` query parameter is set
+  // Only run if the `catify` query parameter is set
   if (!url.searchParams.has("cheese")) {
-    return;
+    return context.next();
   }
 
  // const location = context?.geo?.city;
@@ -17,10 +14,15 @@ export default async function handler(request, context){
   const rewriter = new HTMLRewriter()
     .on("#plate", {
       element: (element) => {
-        element.setInnerContent(`boom`);
+        element.setInnerContent(`A cheese was returned for a visitor`);
       },
     })
     
   return rewriter.transform(response);
 }
 
+export const config = {
+    path: "/*",
+    excludedPath: ["/robots.txt", "/__webpack_hmr", "/manifest.webmanifest", "/*.js", "/*.css", "/page-data/*"],
+    onError: "bypass",
+};

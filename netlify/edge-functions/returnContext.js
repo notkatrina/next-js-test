@@ -1,12 +1,9 @@
-import { Config, Context } from "@netlify/edge-functions";
+
 import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
 
-
-
-//export default async (request, context) => 
-export default async function handler(request, context){
+export default async (request, context) => {
   const url = new URL(request.url);
-  // Only run if the `sponge` query parameter is set
+  // Only run if the `catify` query parameter is set
   if (!url.searchParams.has("sponge")) {
     return context.next();
   }
@@ -17,10 +14,15 @@ export default async function handler(request, context){
   const rewriter = new HTMLRewriter()
     .on("#platter", {
       element: (element) => {
-        element.setInnerContent(`bam`);
+        element.setInnerContent(`A sponge was requested for context`);
       },
     })
     
   return rewriter.transform(response);
 }
 
+export const config = {
+    path: "/*",
+    excludedPath: ["/robots.txt", "/__webpack_hmr", "/manifest.webmanifest", "/*.js", "/*.css", "/page-data/*"],
+    onError: "bypass",
+};
