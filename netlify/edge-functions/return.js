@@ -1,11 +1,12 @@
 
 import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
 
-export default async (request, context) => {
   const url = new URL(request.url);
-  // Only run if the `catify` query parameter is set
+export default async (request, context) => {
+
+  // Only run if the `cheese` query parameter is set
   if (!url.searchParams.has("cheese")) {
-    return context.next();
+    return;
   }
 
  // const location = context?.geo?.city;
@@ -14,15 +15,10 @@ export default async (request, context) => {
   const rewriter = new HTMLRewriter()
     .on("#platter", {
       element: (element) => {
-        element.setInnerContent(`A cheese was returned for a visitor`);
+        element.setInnerContent("A cheese was returned for a visitor");
       },
     })
     
   return rewriter.transform(response);
 }
 
-export const config = {
-    path: "/*",
-    excludedPath: ["/robots.txt", "/__webpack_hmr", "/manifest.webmanifest", "/*.js", "/*.css", "/page-data/*"],
-    onError: "bypass",
-};

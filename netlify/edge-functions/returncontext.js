@@ -1,6 +1,7 @@
 
 import { HTMLRewriter } from "https://ghuc.cc/worker-tools/html-rewriter/index.ts";
 
+  const url = new URL(request.url);
 export default async (request, context) => {
   const url = new URL(request.url);
   // Only run if the `catify` query parameter is set
@@ -12,6 +13,7 @@ export default async (request, context) => {
 
   const response = await context.next();
   const rewriter = new HTMLRewriter()
+
     .on("#platter", {
       element: (element) => {
         element.setInnerContent("A sponge was requested for context");
@@ -21,8 +23,3 @@ export default async (request, context) => {
   return rewriter.transform(response);
 }
 
-export const config = {
-    path: "/*",
-    excludedPath: ["/robots.txt", "/__webpack_hmr", "/manifest.webmanifest", "/*.js", "/*.css", "/page-data/*"],
-    onError: "bypass",
-};
