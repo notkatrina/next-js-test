@@ -19,5 +19,6 @@ export default async (request, context) => {
     })
     
   return rewriter.transform(response);
+   console.log(`ran return context for ${url} `);
 }
 
