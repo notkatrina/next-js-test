@@ -8,21 +8,16 @@ export default async (request, context) => {
     return context.next();
   }
 
- // const location = context?.geo?.city;
+ const location = context?.geo?.city;
 
   const response = await context.next();
   const rewriter = new HTMLRewriter()
-    .on("#platter", {
+    .on("#sponge", {
       element: (element) => {
-        element.setInnerContent(`A sponge was requested for context`);
+         element.setAttribute("style", "background-color: red !important;");
       },
     })
     
   return rewriter.transform(response);
 }
 
-export const config = {
-    path: "/*",
-    excludedPath: ["/robots.txt", "/__webpack_hmr", "/manifest.webmanifest", "/*.js", "/*.css", "/page-data/*"],
-    onError: "bypass",
-};

@@ -12,17 +12,12 @@ export default async (request, context) => {
 
   const response = await context.next();
   const rewriter = new HTMLRewriter()
-    .on("#plate", {
+    .on("#cheese", {
       element: (element) => {
-        element.setInnerContent(`A cheese was returned for a visitor`);
+        element.setAttribute("style", "background-color: red !important;");
       },
     })
     
   return rewriter.transform(response);
 }
 
-export const config = {
-    path: "/*",
-    excludedPath: ["/robots.txt", "/__webpack_hmr", "/manifest.webmanifest", "/*.js", "/*.css", "/page-data/*"],
-    onError: "bypass",
-};
