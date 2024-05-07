@@ -22,8 +22,8 @@ export default async (request, context) => {
     .on("#h5[sponge]", {
       element: (element) => {
          element.setAttribute("style", "background-color: red;");
-      },
          console.log(`ran return context`);
+      },
     })
     
   return rewriter.transform(response);
