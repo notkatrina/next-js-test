@@ -13,10 +13,10 @@ export default function Home() {
       <main>
         <Header title="Welcome to my app!" />
           <h5> <a href ="?sponge"> Return Context </a> or < a href="?cheese"> Just Return </a></h5>
-        <p id="platter">
+        <p id="plate">
          The edge function applied is  <code> returncontext.js </code>
         </p>
-            <p id="plate">
+            <p id="platter">
           The edge function applied is <code>return.js</code>
         </p>
       </main>
