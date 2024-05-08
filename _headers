@@ -1,0 +1,13 @@
+# basic site test
+/a-test-page.html
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# permisison policy test
+/a-test-page2.html
+ Permissions-Policy: accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=(),
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# worker-src semicolon colon test
+/*
+ Content-Security-Policy: default-src 'self'; worker-src blob:;
+ Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
